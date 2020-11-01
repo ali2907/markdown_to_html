@@ -7,15 +7,11 @@ module.exports.markdown_html_converter = (event, context, callback) => {
 
     const outputHtml = readInput(inputMarkDown)
 
-    const html = `
-  <html>
-    <style>
-      h1 { color: #73757d; }
-    </style>
-    <body>
-      ${outputHtml}
-    </body>
-  </html>`
+    const html = `<html>
+                    <body>
+                      ${outputHtml}
+                    </body>
+                  </html>`
 
     const response = {
         statusCode: 200,
