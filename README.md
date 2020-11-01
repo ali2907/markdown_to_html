@@ -1,7 +1,5 @@
 # Markdown to HTML Converter
 
-Foobar is a Python library for dealing with word pluralization.
-
 ## Installation
 
 ```bash
