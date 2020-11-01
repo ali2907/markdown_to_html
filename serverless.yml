@@ -8,30 +8,22 @@ org: ali-heidary
 # frameworkVersion: "=X.X.X"
 
 provider:
-  name: aws
-  runtime: nodejs12.x
-  stage: dev
-  region: us-east-1
+    name: aws
+    runtime: nodejs12.x
+    stage: dev
+    region: us-east-1
 
 functions:
-  hello:
-    handler: handler.hello
-    events:
-      - http:
-          path: convert/create
-          method: GET
-  markdown_html_converter:
-    handler: handler.markdown_html_converter
-    events:
-      - http:
-          path: convert
-          method: POST
-          
+    markdown_html_converter:
+        handler: handler.markdown_html_converter
+        events:
+            - http:
+                  path: convert
+                  method: POST
+
 plugins:
-  - serverless-offline
+    - serverless-offline
 
 custom:
-  serverless-offline:
-    httpPort: 4333
-    # stageVariables:
-    #   foo: "bar"
+    serverless-offline:
+        httpPort: 4333
