@@ -1,17 +1,30 @@
-'use strict';
+'use strict'
 
-module.exports.markdown_html_converter = async event => {
-  return {
-    statusCode: 200,
-    body: JSON.stringify(
-      {
-        message: 'Go Serverless v1.0! Your function executed successfully!',
-        test: "POST",
-        body: event.body
-      },
-      null,
-      2
-    ),
-  };
+const { readInput } = require('./utils')
 
-};
+module.exports.markdown_html_converter = (event, context, callback) => {
+    const inputMarkDown = event.body
+
+    const outputHtml = readInput(inputMarkDown)
+
+    const html = `
+  <html>
+    <style>
+      h1 { color: #73757d; }
+    </style>
+    <body>
+      ${outputHtml}
+    </body>
+  </html>`
+
+    const response = {
+        statusCode: 200,
+        headers: {
+            'Content-Type': 'text/html',
+        },
+        body: html,
+    }
+
+    // callback is sending HTML back
+    callback(null, response)
+}
