@@ -62,6 +62,20 @@ describe('ReadMe to HTML Converter tests For Headers', () => {
             '<h4>Heading 4 <a href="http://mailchimp.com">link text</a> Another Link <a href="http://example.com">link text 2</a> More Text</h4>'
         )
     })
+
+    test('Header text with broken URLs', () => {
+        const testString = '#### Heading 4 [link text http://mailchimp.com)'
+        expect(convertToHtml(testString)).toEqual(
+            '<h4>Heading 4 [link text http://mailchimp.com)</h4>'
+        )
+    })
+
+    test('Header text with broken URLs', () => {
+        const testString = '#### Heading 4 link text](http://mailchimp.com)'
+        expect(convertToHtml(testString)).toEqual(
+            '<h4>Heading 4 link text](http://mailchimp.com)</h4>'
+        )
+    })
 })
 
 describe('ReadMe to HTML Converter tests For Unformatted Texts', () => {
