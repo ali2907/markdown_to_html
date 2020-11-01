@@ -5,7 +5,8 @@
   "main": "handler.js",
   "scripts": {
     "start": "sls offline",
-    "test": "jest"
+    "test": "jest",
+    "coverage": "jest --collect-coverage"
   },
   "author": "Ali Heidary",
   "license": "ISC",

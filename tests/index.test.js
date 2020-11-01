@@ -63,3 +63,40 @@ describe('ReadMe to HTML Converter tests For Headers', () => {
         )
     })
 })
+
+describe('ReadMe to HTML Converter tests For Unformatted Texts', () => {
+    beforeEach(() => {})
+
+    test('Unformatted Text', () => {
+        const testString = 'How are you?'
+        expect(convertToHtml(testString)).toEqual('<p>How are you?</p>')
+    })
+
+    test('Empty Unformatted Text', () => {
+        const testString = ''
+        expect(convertToHtml(testString)).toEqual('')
+    })
+
+    test('Unformatted Text with URL in middle', () => {
+        const testString =
+            'This is a paragraph [with an inline link](http://google.com). Neat, eh?'
+        expect(convertToHtml(testString)).toEqual(
+            '<p>This is a paragraph <a href="http://google.com">with an inline link</a>. Neat, eh?</p>'
+        )
+    })
+
+    test('Unformatted Text with URL in start', () => {
+        const testString = '[with an inline link](http://google.com). Neat, eh?'
+        expect(convertToHtml(testString)).toEqual(
+            '<p><a href="http://google.com">with an inline link</a>. Neat, eh?</p>'
+        )
+    })
+
+    test('Unformatted Text with multiple URLs', () => {
+        const testString =
+            'This is a paragraph [with an inline link](http://google.com). Neat, eh? [link text 2](http://example.com) More Text'
+        expect(convertToHtml(testString)).toEqual(
+            '<p>This is a paragraph <a href="http://google.com">with an inline link</a>. Neat, eh? <a href="http://example.com">link text 2</a> More Text</p>'
+        )
+    })
+})
