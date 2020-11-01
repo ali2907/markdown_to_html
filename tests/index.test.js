@@ -100,3 +100,28 @@ describe('ReadMe to HTML Converter tests For Unformatted Texts', () => {
         )
     })
 })
+
+describe('ReadMe to HTML Converter tests For Multi-line', () => {
+    beforeEach(() => {})
+
+    test('Sample 1 Text', () => {
+        const testString = `# Sample Document\nHello!\nThis is sample markdown for the [Mailchimp](https://www.mailchimp.com) homework assignment.`
+        expect(convertToHtml(testString)).toEqual(
+            '<h1>Sample Document</h1><p>Hello!</p><p>This is sample markdown for the <a href="https://www.mailchimp.com">Mailchimp</a> homework assignment.</p>'
+        )
+    })
+
+    test('Sample 2 Text', () => {
+        const testString = `# Header one\nHello there\nHow are you?\nWhat's going on?\n## Another Header\nThis is a paragraph [with an inline link](http://google.com). Neat, eh?\n## This is a header [with a link](http://yahoo.com)`
+        expect(convertToHtml(testString)).toEqual(
+            `<h1>Header one</h1><p>Hello there</p><p>How are you?</p><p>What's going on?</p><h2>Another Header</h2><p>This is a paragraph <a href=\"http://google.com\">with an inline link</a>. Neat, eh?</p><h2>This is a header <a href=\"http://yahoo.com\">with a link</a></h2>`
+        )
+    })
+
+    test('Sample 2 Text', () => {
+        const testString = `# Header one\n\nTest Paragraph`
+        expect(convertToHtml(testString)).toEqual(
+            `<h1>Header one</h1><p>Test Paragraph</p>`
+        )
+    })
+})
