@@ -1,11 +1,11 @@
 'use strict'
 
-const { readInput } = require('./utils')
+const { convertToHtml } = require('./utils')
 
 module.exports.markdown_html_converter = (event, context, callback) => {
     const inputMarkDown = event.body
 
-    const outputHtml = readInput(inputMarkDown)
+    const outputHtml = convertToHtml(inputMarkDown)
 
     const html = `<html>
                     <body>

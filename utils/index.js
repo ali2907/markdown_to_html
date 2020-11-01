@@ -110,7 +110,7 @@ const handleTextLinks = (input) => {
     return response
 }
 
-const readMeToHtml = (input) => {
+const stringToHtml = (input) => {
     if (typeof input !== 'string' || input.length === 0) {
         return ''
     }
@@ -124,7 +124,7 @@ const readMeToHtml = (input) => {
     return `<p>${handleTextLinks(input)}</p>`
 }
 
-const readInput = (inputMarkDown) => {
+const convertToHtml = (inputMarkDown) => {
     if (typeof inputMarkDown !== 'string' || inputMarkDown.length === 0) {
         return ''
     }
@@ -134,12 +134,12 @@ const readInput = (inputMarkDown) => {
     let htmlOutput = ''
 
     markDownArray.forEach((elem) => {
-        htmlOutput += readMeToHtml(elem)
+        htmlOutput += stringToHtml(elem)
     })
 
     return htmlOutput
 }
 
 module.exports = {
-    readInput: readInput,
+    convertToHtml: convertToHtml,
 }
